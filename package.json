@@ -1,0 +1,28 @@
+{
+  "name": "translate-me",
+  "version": "1.0.0",
+  "description": "Translation Discord bot created using Discord.js for Discord Hack Week.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RoboJackPlays/translate-me.git"
+  },
+  "author": [
+    "Matthew Rowland <contact@mathhulk.me> (https://mathhulk.com)",
+    "Jack Cosens <contact@jackcosens.com> (https://jackcosens.com)",
+    "AngaBlue"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RoboJackPlays/translate-me/issues"
+  },
+  "homepage": "https://github.com/RoboJackPlays/translate-me#readme",
+  "dependencies": {
+    "discord.js": "^11.5.1",
+    "google-translate-api": "^2.3.0",
+    "mongodb": "^3.2.7"
+  }
+}
