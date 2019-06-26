@@ -1,28 +1,21 @@
-import { MongoClient, ObjectId } from "mongodb";
+module.exports = (client, message) => {
+	console.log(client.db)
+	const database = client.db.database("guilds");
+	if (message.author.bot) return
+	database.collection("guilds").findOne({ guild: message.guild.id }, (error, readGuild) => {
+		if (error) console.error(error);
 
-const driver = new MongoClient(process.env.MONGO_CLIENT_URL);
+		if (message.content.indexOf(readGuild.prefix) !== 0) return;
 
-driver.connect( (error, client) => {
-	database = client.database("guilds");
-	
-	module.exports = (client, message) => {
-		if(message.author.bot) return;
-		
-		database.collection("guilds").findOne({ guild: message.guild.id }, (error, readGuild) => {
-			if(error) console.error(error);
-			
-			if(message.content.indexOf(readGuild.prefix) !== 0) return;
-			
-			const arguments = message.content.slice(readGuild.prefix.length).trim( ).split(/ +/g);
-			const input = arguments.shift( ).toLowerCase( );
-			
-			const command = client.commands[input];
-			
-			if(!command) return;
-			
-			command.run(client, message, arguments);
-			
-			// command run
-		});
-	};
-});
+		const arguments = message.content.slice(readGuild.prefix.length).trim().split(/ +/g);
+		const input = arguments.shift().toLowerCase();
+
+		const command = client.commands[input];
+
+		if (!command) return;
+
+		command.run(client, message, arguments);
+		console.log(message)
+		//Command Run
+	});
+};
